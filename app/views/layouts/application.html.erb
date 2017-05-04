@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MembersOnly</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  	<%= link_to "sign in", new_sessions_path%>
+    <%= link_to "sign out", sessions_path, method: :delete %>
+    <%= link_to "create a post", new_posts_path %>
+    <%= link_to "view posts", posts_index_path %>
+    
+    <h4><%= "You're signed in." if current_user_is_signed_in? %></h4>
+    <% flash.each do |k,v| %>
+    <h1><%= "#{k}: #{v}" %></h1>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

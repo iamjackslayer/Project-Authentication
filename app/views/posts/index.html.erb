@@ -1,0 +1,7 @@
+<% @posts.each do |post| %>
+	<% if current_user_is_signed_in? %>
+	<h2><%= post.user.name  %></h2>
+	<% end %>
+	<h3><%= current_user_is_signed_in? ? post.user.id : "Anonymous" %></h2>
+	<p><%= post.comment %></p>
+<% end %>
